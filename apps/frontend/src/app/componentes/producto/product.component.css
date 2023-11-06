@@ -1,0 +1,22 @@
+.card-title {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-text {
+    font-family: fantasy;
+}
+
+.container {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(54, 5, 103);
+    
+}
+
+.row {
+    margin: 20px;
+}
+
+.card {
+    margin-bottom: 20px; 
+       
+}

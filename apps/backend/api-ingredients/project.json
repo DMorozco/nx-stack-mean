@@ -1,0 +1,64 @@
+{
+  "name": "api-ingredients",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend/api-ingredients/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/backend/api-ingredients",
+        "main": "apps/backend/api-ingredients/src/main.ts",
+        "tsConfig": "apps/backend/api-ingredients/tsconfig.app.json",
+        "assets": ["apps/backend/api-ingredients/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/backend/api-ingredients/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "api-ingredients:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api-ingredients:build:development"
+        },
+        "production": {
+          "buildTarget": "api-ingredients:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/backend/api-ingredients/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/backend/api-ingredients/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

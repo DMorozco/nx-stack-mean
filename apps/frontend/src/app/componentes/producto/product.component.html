@@ -1,0 +1,23 @@
+<diannemormont-header></diannemormont-header>
+<div class="container">
+  <br>
+  <br>
+  <h2>Productos para manicura profesional</h2>
+  <br>
+  <div class="row">
+    <div *ngFor="let product of products" class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" [src]="product.url" style="height: 300px">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">
+            <strong>Precio:</strong> {{ product.price | currency:'USD':'symbol':'1.2-2' }}
+          </p>
+          <a href="https://wa.me/message/245BWUPEWSDTF1" class="btn btn-primary" target="_blank" style="background-color: #ff69b4; color: #fff;">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<diannemormont-footer></diannemormont-footer>

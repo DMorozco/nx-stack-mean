@@ -1,0 +1,27 @@
+<diannemormont-header-admin></diannemormont-header-admin>
+<div class="container mt-5"></div>
+<h2 class="font-weight-bold">Lista de contactos</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Mensaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of contacts">
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.email }}</td>
+      <td>{{ contact.message }}</td>
+    </tr>
+  </tbody>
+</table>
+<div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<diannemormont-footer></diannemormont-footer>
+

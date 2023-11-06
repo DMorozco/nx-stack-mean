@@ -1,0 +1,39 @@
+.container {
+font-family: fantasy;
+margin-top: 20px;
+}
+
+.carousel {
+    margin: 0 auto; 
+    max-width: 50%; 
+    
+}
+
+.carousel-item img {
+    max-height: 500px;
+    margin: 0 auto; 
+    box-shadow: 0 10px 20px rgb(228, 2, 194);
+    border-radius: 30px;
+}
+
+.container {
+    padding: 20px; 
+}
+
+
+
+.social-icons a {
+    color: #ee0fcc; 
+    text-decoration: none; 
+    margin: 0 10px; 
+    font-size: 30px; 
+}
+
+.card-img-u{
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgb(228, 2, 194);
+}
+
+.card-img-m{
+    border-radius: 30px;
+}

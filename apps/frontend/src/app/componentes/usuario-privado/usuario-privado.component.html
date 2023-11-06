@@ -1,0 +1,36 @@
+<diannemormont-header-admin></diannemormont-header-admin>
+<div class="container mt-5">
+  <h2 class="font-weight-bold">Lista de Usuarios</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td><input id="name" type="text" [(ngModel)]="user.name"></td>
+        <td><input id="lastname" type="text" [(ngModel)]="user.lastname"></td>
+        <td><input id="email" type="text" [(ngModel)]="user.email"></td>
+        <td><input id="phone" type="number" [(ngModel)]="user.phone"></td>
+        <td>
+          <button class="btn btn-primary" (click)="update(user)">
+            Editar
+          </button>
+          <button class="btn btn-danger" (click)="delete(user.email)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<diannemormont-footer></diannemormont-footer>

@@ -1,0 +1,22 @@
+.col-md-4 {
+    margin-top: 30px;
+}
+
+
+
+.col-md-6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 40px;
+}
+
+.col-md-6 p {
+    font-family: fantasy;
+}
+
+.card-img-m{
+    border-radius: 30px;
+    height: 150px;
+    width: 150px;
+    margin-top: 30px;
+    box-shadow: 0 10px 20px rgb(228, 2, 194);
+}
