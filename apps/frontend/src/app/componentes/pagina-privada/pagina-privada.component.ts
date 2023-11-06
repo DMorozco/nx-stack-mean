@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductDeletedResponse, ProductDto, ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'diannemormont-pagina-privada',
+  selector: 'app-pagina-privada',
   templateUrl: './pagina-privada.component.html',
   styleUrls: ['./pagina-privada.component.css']
 })

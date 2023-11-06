@@ -4,7 +4,7 @@ import { AccountDto, AccountService } from 'src/app/services/account.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'diannemormont-login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })

@@ -2,7 +2,7 @@
   "name": "frontend",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "diannemormont",
+  "prefix": "app",
   "sourceRoot": "apps/frontend/src",
   "tags": [],
   "targets": {
@@ -16,7 +16,10 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/frontend/tsconfig.app.json",
         "assets": ["apps/frontend/src/favicon.ico", "apps/frontend/src/assets"],
-        "styles": ["apps/frontend/src/styles.css"],
+        "styles": [
+          "apps/frontend/src/app/shared/css/styles.css",
+          "apps/frontend/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {

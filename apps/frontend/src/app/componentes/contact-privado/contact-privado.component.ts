@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactDto, ContactService } from 'src/app/services/contact.service';
 
 @Component({
-  selector: 'diannemormont-contact-privado',
+  selector: 'app-contact-privado',
   templateUrl: './contact-privado.component.html',
   styleUrls: ['./contact-privado.component.css']
 })

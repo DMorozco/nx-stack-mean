@@ -3,7 +3,7 @@ import { AccountDto, AccountResponse, AccountService } from 'src/app/services/ac
 import { UserDto, UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'diannemormont-registro',
+  selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })

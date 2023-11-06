@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserDto, UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'diannemormont-usuario-privado',
+  selector: 'app-usuario-privado',
   templateUrl: './usuario-privado.component.html',
   styleUrls: ['./usuario-privado.component.css']
 })

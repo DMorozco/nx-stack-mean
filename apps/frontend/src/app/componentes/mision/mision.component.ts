@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'diannemormont-mision',
+  selector: 'app-mision',
   templateUrl: './mision.component.html',
   styleUrls: ['./mision.component.css']
 })
