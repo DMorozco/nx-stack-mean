@@ -1,14 +1,11 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ContactenosComponent } from './componentes/contactenos/contactenos.component';
-import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { MisionComponent } from './componentes/mision/mision.component';
 import { ProductComponent } from './componentes/producto/product.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
-import { VisionComponent } from './componentes/vision/vision.component';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { AppComponent } from './routing/app.component';
 import { UserService } from './services/user.service';
@@ -25,6 +22,19 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { MobilemenuComponent } from './shared/mobilemenu/mobilemenu.component';
 import { SearchComponent } from './shared/search/search.component';
 import { CartlistComponent } from './shared/cartlist/cartlist.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AboutComponent } from './componentes/home/about/about.component';
+import { BannerComponent } from './componentes/home/banner/banner.component';
+import { CategoriesComponent } from './componentes/home/categories/categories.component';
+import { CtaComponent } from './componentes/home/cta/cta.component';
+import { InstagramComponent } from './componentes/home/instagram/instagram.component';
+import { ProductsComponent } from './componentes/home/products/products.component';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -32,8 +42,6 @@ import { CartlistComponent } from './shared/cartlist/cartlist.component';
     HeaderComponent,
     HeaderAdminComponent,
     FooterComponent,
-    MisionComponent,
-    VisionComponent,
     ContactenosComponent,
     HomeComponent,
     RegistroComponent,
@@ -45,15 +53,32 @@ import { CartlistComponent } from './shared/cartlist/cartlist.component';
     MenuComponent,
     MobilemenuComponent,
     SearchComponent,
-    CartlistComponent
+    CartlistComponent,
+    AboutComponent,
+    BannerComponent,
+    CategoriesComponent,
+    CtaComponent,
+    InstagramComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SlickCarouselModule
   ],
-  providers: [UserService, AccountService, ProductService, ContactService],
-  bootstrap: [AppComponent]
+  providers: [
+    UserService, 
+    AccountService, 
+    ProductService, 
+    ContactService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

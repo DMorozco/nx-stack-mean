@@ -14,7 +14,7 @@ export class CartlistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
+    console.log('CartlistComponent');
   }
   
   public calculateprice() {
