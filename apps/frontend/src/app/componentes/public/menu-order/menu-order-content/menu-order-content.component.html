@@ -1,0 +1,114 @@
+<div *ngFor="let item of productdetails">
+    <div class="section product-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Main Thumb -->
+                    <div class="product-thumb">
+                        <img [src]="item.img" alt="{{item.name}}">
+                    </div>
+                    <!-- /Main Thumb -->
+                </div>
+                <div class="col-md-7">
+                    <div class="product-content">
+                        <!-- Product Title -->
+                        <h2 class="title">{{item.name}}</h2>
+                        <!-- /Product Title -->
+                        <div class="favorite">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <!-- Rating -->
+                        <div class="ct-rating-wrapper">
+                            <div class="ct-rating">
+                                <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fas fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                            <span>(24 ratings)</span>
+                        </div>
+                        <!-- /Rating -->
+                        <!-- Price -->
+                        <div class="price-wrapper">
+                            <p class="product-price">{{item.price | number:'1.2-2'}}$</p>
+                        </div>
+                        <!-- /Price -->
+                        <!-- Product Short Description -->
+                        <p>{{item.shortdesc}}</p>
+                        <!-- /Product Short Description -->
+                        <!-- Variations -->
+                        <div class="customize-variations">
+                            <div class="customize-size-wrapper">
+                                <h5>Size: </h5>
+                                <div class="customize-size" [ngClass]="item.state === true ? 'active' : ''"
+                                    *ngFor="let item of item.sizes">
+                                    {{item.size}}"
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- Variation Start -->
+                                <div class="col-lg-6 col-12" *ngFor="let item of item.attributes">
+                                    <div class="customize-variation-wrapper">
+                                        <i class="{{item.icon}}"></i>
+                                        <h5>{{item.name}}</h5>
+                                        <div class="customize-variation-item" *ngFor="let add of item.items">
+                                            <div class="custom-control custom-{{item.type}}">
+                                                <input type="{{item.type}}" id="{{add.title + 1}}" name="{{item.name}}"
+                                                    class="custom-control-input">
+                                                <label class="custom-control-label"
+                                                    for="{{add.title + 1}}">{{add.title}}</label>
+                                            </div>
+                                            <span>+{{add.addprice | number:'1.2-2'}}$</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Variation End -->
+                            </div>
+                        </div>
+                        <!-- /Variations -->
+                        <!-- Add To Cart Form -->
+                        <form class="atc-form" method="post">
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <div class="qty">
+                                    <span class="qty-subtract" (click)="decrement()"><i class="fas fa-minus"></i></span>
+                                    <input type="text" name="qty" value="{{counter}}">
+                                    <span class="qty-add" (click)="increment()"><i class="fas fa-plus"></i></span>
+                                </div>
+                            </div>
+                            <button type="submit" name="button" class="btn-custom secondary"> Order <i
+                                    class="fas fa-shopping-cart"></i> </button>
+                        </form>
+                        <!-- /Add To Cart Form -->
+                        <!-- Product Meta -->
+                        <ul class="product-meta">
+                            <li>
+                                <span>Categories: </span>
+                                <div class="product-meta-item">
+                                    <a href="#"
+                                        *ngFor="let category of getProductCategory(item.category) | slice:0:2">{{category.title}},
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Tags: </span>
+                                <div class="product-meta-item">
+                                    <a href="#"
+                                        *ngFor="let tags of getBlogTags(item.tags)">{{tags.title}}, </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span>SKU: </span>
+                                <div class="product-meta-item">
+                                    <span>{{item.sku}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- /Product Meta -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,15 @@
 export interface ProductDto {
-    code: string;
-    name: string;
-    description: string;
-    price: number;
-    stock: number;
-    url: string;
+  id: number;
+  img: string;
+  name: string;
+  shortdesc: string;
+  price: number;
+  rating: number;
+  category: number[];
+  sizes: [];
+  sku: string;
+  tags: number[];
+  attributes: [];
+  longdescription: string;
+  reviews: [];
 }

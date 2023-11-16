@@ -1,5 +1,5 @@
 <div class="cart-sidebar-body">
-    <!-- <perfect-scrollbar class="cart-sidebar-scroll"> -->
+    <cdk-virtual-scroll-viewport class="cart-sidebar-scroll" [itemSize]="52.5">
         <div class="cart-sidebar-item" *ngFor="let item of cart">
             <div class="media">
                 <a routerLink="/menu-item-v1/1"><img [src]="item.img" alt="{{item.name}}"></a>
@@ -19,7 +19,7 @@
                 <span></span>
             </div>
         </div>
-    <!-- </perfect-scrollbar> -->
+    </cdk-virtual-scroll-viewport>
 </div>
 <div class="cart-sidebar-footer">
     <h4>Total: <span>{{calculateprice() | number:'1.2-2'}}$</span> </h4>

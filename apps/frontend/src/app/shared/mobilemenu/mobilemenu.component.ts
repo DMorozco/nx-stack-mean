@@ -1,5 +1,5 @@
 import { AfterContentInit, Component } from '@angular/core';
-import { NavigationModel, menuItems } from '../menu/menu.component';
+import { NavigationModel, menuItemsPublic } from '../menu/menu.component';
 
 @Component({
   selector: 'app-mobilemenu',
@@ -11,7 +11,7 @@ export class MobilemenuComponent implements AfterContentInit {
   public open: boolean;
 
   constructor() { 
-    this.navigation = menuItems
+    this.navigation = menuItemsPublic
     this.open = false;
   }
 

@@ -3,10 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 
 export interface UserDto {
-    name: string;
-    lastname: string
-    email: string;
-    phone: string;
+    username: string;
+  password: string;
+  email:string
+  name: string;
+  lastname: string;
+  city: string;
+  address: string;
+  phone: number;
+   
 }
 
 @Injectable({ providedIn: 'root' })
@@ -23,11 +28,11 @@ export class UserService {
         return this.http.post<UserDto>(`${this.baseUrl}`, user);
     }
 
-    delete(email: string): Observable<boolean> {
-        return this.http.delete<boolean>(`${this.baseUrl}/?email=${email}`);
+    delete(user: string): Observable<boolean> {
+        return this.http.delete<boolean>(`${this.baseUrl}/?email=${user}`);
     }
 
     update(user: UserDto): Observable<UserDto> {
-        return this.http.put<UserDto>(`${this.baseUrl}/?email=${user.email}`, user);
+        return this.http.put<UserDto>(`${this.baseUrl}/?email=${user}`, user);
     }
 }

@@ -1,9 +1,3 @@
-/*
-Template Name: Slices - Pizzeria HTML Template
-Author: Androthemes
-Author URL: https://themeforest.net/user/androthemes
-Version: 1.0.0
-*/
 /*===========================
  =  Table of Contents
  0. Keyframes
@@ -150,7 +144,7 @@ Version: 1.0.0
 }
 .lds-ripple div {
   position: absolute;
-  border: 4px solid #FCCC4C;
+  border: 4px solid red;
   opacity: 1;
   border-radius: 50%;
   -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
@@ -476,7 +470,6 @@ blockquote {
 }
 blockquote::before{
   content: '\f103';
-  font-family: flaticon;
   position: absolute;
   top: 50%;
   left: -10px;
@@ -1085,6 +1078,7 @@ table img{
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+          
 }
 
 .navbar .menu-item {
@@ -1236,7 +1230,7 @@ table img{
   width: 100%;
 }
 .navbar .menu-item.mega-menu-wrapper .submenu li{
-  margin: 0;
+  margin: 30px;
   padding: 20px;
 }
 .mega-menu-promotion-wrapper{
@@ -1984,7 +1978,7 @@ table img{
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: #4e4e4e;
+  background-color: black;
   color: #fff;
   margin-left: 20px;
   -webkit-transition: .3s;
@@ -2113,7 +2107,7 @@ table img{
 
 /* Dark Footer */
 .ct-footer.footer-dark{
-  background-color: #1D2228;
+  background-color: #04418c;
 }
 .ct-footer.footer-dark p,
 .ct-footer.footer-dark .footer-widget ul li a::before,
@@ -2129,7 +2123,7 @@ table img{
   color: #b7b7b7;
 }
 .ct-footer.footer-dark .footer-bottom ul{
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(83, 13, 13, 0.1);
 }
 
 
@@ -2358,7 +2352,7 @@ table img{
   overflow: hidden;
 }
 .banner-nav-item.slick-current .banner-nav-item-inner{
-  background-color: #FCCC4C;
+  background-color: red;
 }
 .banner-nav-item-inner:hover{
   background-color: #fff2d1;
@@ -2843,7 +2837,6 @@ table img{
 }
 .ct-category::before{
   content: '\f130';
-  font-family: flaticon;
   position: absolute;
   bottom: -30px;
   left: 50%;
@@ -3158,7 +3151,6 @@ table img{
 }
 .gallery-thumb::before{
   content: '\f11f';
-  font-family: flaticon;
   width: 40px;
   height: 40px;
   position: absolute;
@@ -3826,7 +3818,6 @@ table img{
 
 /* 8.2. Login & Signup */
 .auth-wrapper{
-  margin-top: 10%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3939,7 +3930,6 @@ table img{
   margin-bottom: 10px;
   text-align: center;
   white-space: nowrap;
-  vertical-align: middle;
   line-height: 24px;
   border: 0;
   font-size: 14px;
@@ -4603,7 +4593,6 @@ td.quantity{
 }
 .location-item::before{
   content: '\f130';
-  font-family: flaticon;
   position: absolute;
   bottom: -10px;
   left: 50%;

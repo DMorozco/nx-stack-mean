@@ -7,7 +7,7 @@ export interface AccountResponse {
   data: AccountDto | AccountDto[];
   error?: {
     message: string;
-  }
+  };
 }
 
 export class AccountService {
@@ -15,21 +15,22 @@ export class AccountService {
     try {
       const account: IAccount[] | void = await Account.find();
       const accounts = (account || []).map((account: IAccount) => ({
+        username: account.username,
         email: account.email,
         password: account.password,
         role: account.role,
       }));
       return {
         status: 200,
-        data: accounts
-      }
+        data: accounts,
+      };
     } catch (error) {
       return {
         status: 500,
         data: null,
         error: {
-          message: error.message
-        }
+          message: error.message,
+        },
       };
     }
   }
@@ -43,10 +44,11 @@ export class AccountService {
         return {
           status: 201,
           data: {
+            username: newAccount.username,
             email: newAccount.email,
             password: hashedPassword,
             role: account.role,
-          }
+          },
         };
       }
     } catch (error) {
@@ -55,8 +57,8 @@ export class AccountService {
         status,
         data: null,
         error: {
-          message: error.message
-        }
+          message: error.message,
+        },
       };
     }
   }
@@ -72,7 +74,10 @@ export class AccountService {
     }
   }
 
-  static async update(email: string, account: AccountDto): Promise<AccountResponse> {
+  static async update(
+    email: string,
+    account: AccountDto
+  ): Promise<AccountResponse> {
     try {
       const hashedPassword = await bcrypt.hash(account.password, 10);
       const updateAccount: IAccount | void = await Account.findOneAndUpdate(
@@ -85,10 +90,11 @@ export class AccountService {
         return {
           status: 200,
           data: {
+            username: updateAccount.username,
             email: updateAccount.email,
             password: hashedPassword,
             role: account.role,
-          }
+          },
         };
       }
     } catch (error) {
@@ -96,8 +102,8 @@ export class AccountService {
         status: 500,
         data: null,
         error: {
-          message: error.message
-        }
+          message: error.message,
+        },
       };
     }
   }
@@ -105,28 +111,29 @@ export class AccountService {
   static async login(account: AccountDto): Promise<AccountResponse> {
     try {
       const existingAccount: IAccount | void = await Account.findOne({
-        email: account.email,
+        username: account.username,
       });
       if (!existingAccount) {
         throw new Error('account doesnt exist');
       }
-  
+
       const isPasswordValid = await bcrypt.compare(
         account.password,
         existingAccount.password
       );
-  
+
       if (!isPasswordValid) {
         throw new Error('credentials are invalid');
       }
-  
+
       return {
         status: 200,
         data: {
+          username: existingAccount.username,
           email: existingAccount.email,
           password: existingAccount.password,
           role: existingAccount.role,
-        }
+        },
       };
     } catch (error) {
       const status = error instanceof Error ? 400 : 500;
@@ -134,8 +141,8 @@ export class AccountService {
         status,
         data: null,
         error: {
-          message: error.message
-        } 
+          message: error.message,
+        },
       };
     }
   }

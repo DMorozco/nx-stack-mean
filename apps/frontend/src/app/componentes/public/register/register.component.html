@@ -1,0 +1,43 @@
+<app-header></app-header>
+<app-separator></app-separator>
+<div class="section">
+    <div class="imgs-wrapper">
+        <img src="assets/img/oregan.png" alt="veg" class="d-none d-lg-block">
+        <img src="assets/img/pizzabackground.png" alt="veg" class="d-none d-lg-block">
+    </div>
+    <div class="container">
+        <div class="auth-wrapper">
+            <div class="auth-description bg-cover bg-center dark-overlay dark-overlay-2" style="background-image: url('assets/img/pizza.jpeg')">
+                <div class="auth-description-inner">
+                    <i class="fa-solid fa-pepper-hot"></i>
+                    <h2>Bienvenido</h2>
+                    <p>Es un gusto tenerte en nuestra pizzeria.</p>
+                </div>
+            </div>
+            <div class="auth-form">
+                <h2>Registrarse</h2>
+                <form method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-light" placeholder="Username" name="username" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-control-light" placeholder="Email Address" name="email" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control form-control-light" placeholder="Password" name="password" value="">
+                    </div>
+                    <button type="submit" class="btn-custom primary" >Sign Up</button>
+                    <div class="auth-seperator">
+                        <span>OR</span>
+                    </div>
+                    <div class="social-login">
+                        <button type="button" class="ct-social-login facebook"><i class="fab fa-facebook-f"></i> Continue with Facebook </button>
+                        <button type="button" class="ct-social-login google"><i class="fab fa-google"></i> Continue with Google</button>
+                    </div>
+                    <p>Already have an account? <a routerLink="/login">Login</a> </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

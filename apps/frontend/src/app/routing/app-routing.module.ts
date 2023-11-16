@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from '../componentes/home/home.component';
-import { RegistroComponent } from '../componentes/registro/registro.component';
-import { ProductComponent } from '../componentes/producto/product.component';
-import { ContactenosComponent } from '../componentes/contactenos/contactenos.component';
-import { LoginComponent } from '../componentes/login/login.component';
-import { PaginaPrivadaComponent} from '../componentes/pagina-privada/pagina-privada.component';
-import { UsuarioPrivadoComponent} from '../componentes/usuario-privado/usuario-privado.component';
-import { ContactPrivadoComponent} from '../componentes/contact-privado/contact-privado.component';
+import { IngredientsAdminComponent } from '../componentes/internal/ingredientsadmin/ingredientsadmin.component';
+import { ProductsAdminComponent } from '../componentes/internal/productsadmin/productsadmin.component';
+import { CartComponent } from '../componentes/public/cart/cart.component';
+import { CheckoutComponent } from '../componentes/public/checkout/checkout.component';
+import { HomeComponent } from '../componentes/public/home/home.component';
+import { LoginComponent } from '../componentes/public/login/login.component';
+import { RegisterComponent } from '../componentes/public/register/register.component';
+import { MenuOrderComponent } from '../componentes/public/menu-order/menu-order.component';
 
 const routes: Routes = [
   {path: "",component:HomeComponent, pathMatch:'full'},
-  {path: "registro",component:RegistroComponent, pathMatch:'full'},
-  {path: "producto",component:ProductComponent, pathMatch:'full'},
-  {path: "contactenos",component:ContactenosComponent, pathMatch:'full'},
   {path: "login",component:LoginComponent, pathMatch:'full'},
-  {path: "pagina-privada",component:PaginaPrivadaComponent, pathMatch:'full'},
-  {path: "usuario-privado",component:UsuarioPrivadoComponent, pathMatch:'full'},
-  {path: "contact-privado",component:ContactPrivadoComponent, pathMatch:'full'},
+  {path: "register",component:RegisterComponent,pathMatch:'full'},
+  {path: "cart",component:CartComponent,pathMatch:'full'},
+  {path: "checkout",component:CheckoutComponent,pathMatch:'full'},
+  {path: "products",component:ProductsAdminComponent,pathMatch:'full'},
+  {path: "ingredients",component:IngredientsAdminComponent,pathMatch:'full'},
+  {path: "menu-order/:id",component:MenuOrderComponent,pathMatch:'full'},
   {path: "**",component:HomeComponent,pathMatch:'full'},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
+  
 })
 
 export class AppRoutingModule { }
