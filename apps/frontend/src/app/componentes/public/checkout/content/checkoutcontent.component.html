@@ -5,36 +5,7 @@
             <div class="row">
                 <div class="col-xl-7">
                     <!-- Login -->
-                    <div class="ct-notice">
-                        <p>Are you a returning customer? <a href="javascript:void(0)" (click)="isOne = !isOne"
-                                [attr.aria-expanded]="!isOne">Click here to login</a> </p>
-                    </div>
-                    <div [ngbCollapse]="isOne" class="collapse">
-                        <div class="ct-notice-content d-block">
-                            <div class="row">
-                                <div class="col-xl-6 form-group">
-                                    <label>Username</label>
-                                    <input type="text" class="form-control" name="login-email"
-                                        placeholder="Username" value="">
-                                </div>
-                                <div class="col-xl-6 form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="login-pass" placeholder="Password"
-                                        value="">
-                                </div>
-                                <div class="col-12 form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                        <label class="custom-control-label" for="rememberMe">Remember Me</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn-custom shadow-none btn-sm"
-                                        name="button">Login</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <!-- Coupon Code -->
                     
                     <div [ngbCollapse]="isTwo" class="collapse">
@@ -53,12 +24,12 @@
                     <div class="row">
                         <div class="form-group col-xl-6">
                             <label>Nombre  <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="First Name" name="fname" class="form-control" value=""
+                            <input type="text" placeholder="Primer nombre" name="fname" class="form-control" value="" [(ngModel)]="user.name" 
                                 required="">
                         </div>
                         <div class="form-group col-xl-6">
                             <label>Apellido <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Last Name" name="lname" class="form-control" value=""
+                            <input type="text" placeholder="Apellido" name="lname" class="form-control" value=""[(ngModel)]="user.lastname" 
                                 required="">
                         </div>
                        
@@ -67,30 +38,26 @@
                         </div>
                         <div class="form-group col-xl-6">
                             <label>Direccion de envio <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Street Address One" name="addr-1" class="form-control"
-                                value="" required="">
+                            <input type="text" placeholder="Direccion de envio" name="addr-1" class="form-control"
+                                value="" [(ngModel)]="user.address" required ="">
                         </div>
                         
                         <div class="form-group col-xl-12">
                             <label>Ciudad<span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Town/City" name="town" class="form-control" value=""
+                            <input type="text" placeholder="Ciudad" name="town" class="form-control" value="" [(ngModel)]="user.city" 
                                 required="">
                         </div>
                         <div class="form-group col-xl-6">
                             <label>Telefono<span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Phone Number" name="phone" class="form-control" value=""
+                            <input type="text" placeholder="Telefono" name="phone" class="form-control" value="" [(ngModel)]="user.phone" 
                                 required="">
                         </div>
                         <div class="form-group col-xl-6">
                             <label>Email <span class="text-danger">*</span></label>
-                            <input type="email" placeholder="Email Address" name="email" class="form-control" value=""
+                            <input type="email" placeholder="Email " name="email" class="form-control" value="" [(ngModel)]="user.email"
                                 required="">
                         </div>
-                        <div class="form-group col-xl-12 mb-0">
-                            <label>Informacion adicional</label>
-                            <textarea name="name" rows="5" class="form-control"
-                                placeholder="Order Notes (Optional)"></textarea>
-                        </div>
+                       
                     </div>
                     <!-- /Buyer Info -->
                 </div>
@@ -130,7 +97,7 @@
                     <p class="small">Your personal data will be used to process your order, support your experience
                         throughout this website, and for other purposes described in our <a class="btn-link"
                             href="#">privacy policy.</a> </p>
-                    <button type="submit" class="btn-custom primary btn-block">Ordenar</button>
+                    <button type="submit" class="btn-custom primary btn-block "(click)="createOrUpdateUser()">Ordenar</button>
                     <!-- Order Details End -->
                 </div>
             </div>

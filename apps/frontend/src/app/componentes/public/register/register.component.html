@@ -18,23 +18,23 @@
                 <h2>Registrarse</h2>
                 <form method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-light" placeholder="Username" name="username" value="">
+                        <input type="text" class="form-control form-control-light" placeholder="Username" name="username" value="" [(ngModel)]="newAccount.username" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-light" placeholder="Email Address" name="email" value="">
+                        <input type="email" class="form-control form-control-light" placeholder="Email Address" name="email" value="" [(ngModel)]="newAccount.email" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-light" placeholder="Password" name="password" value="">
+                        <input type="password" class="form-control form-control-light" placeholder="Password" name="password" value="" [(ngModel)]="newAccount.password" required>
                     </div>
-                    <button type="submit" class="btn-custom primary" >Sign Up</button>
+                    <button type="submit" class="btn-custom primary" (click)="create()">Registrarse</button>
                     <div class="auth-seperator">
                         <span>OR</span>
                     </div>
                     <div class="social-login">
-                        <button type="button" class="ct-social-login facebook"><i class="fab fa-facebook-f"></i> Continue with Facebook </button>
-                        <button type="button" class="ct-social-login google"><i class="fab fa-google"></i> Continue with Google</button>
+                        <button type="button" class="ct-social-login facebook"><i class="fab fa-facebook-f"></i> Continuar con Facebook </button>
+                        <button type="button" class="ct-social-login google"><i class="fab fa-google"></i> Continuar coon Google</button>
                     </div>
-                    <p>Already have an account? <a routerLink="/login">Login</a> </p>
+                    <p><a routerLink="/login">Iniciar sesión</a></p>
                 </form>
             </div>
         </div>

@@ -18,13 +18,13 @@
                 <h2>Login</h2>
                 <form method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-light" placeholder="Username" name="username" value="">
+                        <input type="text" class="form-control form-control-light" placeholder="Nombre de usuario" name="username" value="" [(ngModel)]="account.username" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-light" placeholder="Password" name="password" value="">
+                        <input type="password" class="form-control form-control-light" placeholder="Contraseña" name="password" value="" [(ngModel)]="account.password" required>
                     </div>
                     <a href="#"></a>
-                    <button type="submit" class="btn-custom primary">Login</button>
+                    <button type="submit" class="btn-custom primary"(click)="login()">Iniciar sesión</button>
                     <div class="auth-seperator">
                         <span>OR</span>
                     </div>
@@ -32,7 +32,7 @@
                         <button type="button" class="ct-social-login facebook"><i class="fab fa-facebook-f"></i> Continuar con Facebook </button>
                         <button type="button" class="ct-social-login google"><i class="fab fa-google"></i> Continuar con Google</button>
                     </div>
-                    <p>Don't have an account? <a routerLink="/register">Create One</a> </p>
+                    <p>Don't have an account? <a routerLink="/register">Crear cuenta</a> </p>
                 </form>
             </div>
         </div>

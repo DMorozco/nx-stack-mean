@@ -1,10 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { firstValueFrom } from "rxjs";
 
 export interface UserDto {
-    username: string;
-  password: string;
   email:string
   name: string;
   lastname: string;
@@ -14,25 +12,60 @@ export interface UserDto {
    
 }
 
+export interface UserResponse {
+    status: number;
+    data: UserDto;
+    error?: {
+        message:string;
+    };
+}
+
 @Injectable({ providedIn: 'root' })
 export class UserService {
     private readonly baseUrl: string = 'http://localhost:3005/api/users';
-
+ 
     constructor(private http: HttpClient) {}
 
-    getAll(): Observable<UserDto[]> {
-        return this.http.get<UserDto[]>(`${this.baseUrl}`);
-    }
+      public async getAll(user: UserDto): Promise<UserResponse> {
+        return await firstValueFrom(this.http.post<UserResponse>(`${this.baseUrl}`, user))
+          .then((result) => {
+            return result;
+          })
+          .catch((error) => {
+            return error;
+          });;
+      }
 
-    create(user: UserDto): Observable<UserDto> {
-        return this.http.post<UserDto>(`${this.baseUrl}`, user);
-    }
+      public async delete(user: UserDto): Promise<UserResponse> {
+        return await firstValueFrom(this.http.post<UserResponse>(`${this.baseUrl}/email`, user))
+          .then((result) => {
+            return result;
+          })
+          .catch((error) => {
+            return error;
+          });;
+      }
 
-    delete(user: string): Observable<boolean> {
-        return this.http.delete<boolean>(`${this.baseUrl}/?email=${user}`);
-    }
+      public async update(user: UserDto): Promise<UserResponse> {
+        return await firstValueFrom(this.http.post<UserResponse>(`${this.baseUrl}`, user))
+          .then((result) => {
+            return result;
+          })
+          .catch((error) => {
+            return error;
+          });;
+      }
 
-    update(user: UserDto): Observable<UserDto> {
-        return this.http.put<UserDto>(`${this.baseUrl}/?email=${user}`, user);
+      public async createuser(user: UserDto): Promise<UserResponse> {
+        return await firstValueFrom(this.http.post<UserResponse>(`${this.baseUrl}`, user))
+          .then((result) => {
+            console.log(JSON.stringify(result, null, 2))
+            return result;
+          })
+          .catch((error) => {
+            console.log(JSON.stringify(error, null, 2))
+            return error;
+          });
+      }
     }
-}
+    

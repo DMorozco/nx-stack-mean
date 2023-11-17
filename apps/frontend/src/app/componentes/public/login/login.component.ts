@@ -2,8 +2,7 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountDto, AccountService } from 'src/app/services/account.service';
-import { UserDto, UserService } from 'src/app/services/user.service';
+import { AccountDto, AccountResponse, AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -11,46 +10,28 @@ import { UserDto, UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-    account: AccountDto = {
-      username: '',
-      password: '',
-      role: '',
-      email: ''
-    };
-    
+  account: AccountDto = {
+    username: '',
+    password: '',
+  };
 
   constructor(private accountService: AccountService, private router: Router) {}
 
-  login() {
+  public async login() {
     if (!this.account.username || !this.account.password) {
       alert('email, password son requeridos');
       return;
     }
 
-    this.accountService.login(this.account).subscribe((response: { status: number; data: AccountDto; }) => {
-      console.log(response);
-      if (response.status == 200) {
-        alert('Bienvenido');
-
-        const account = response.data as AccountDto;
-
-        if(account.role == 'USER') {
-          this.router.navigate(['/pagina-privada']);
+    await this.accountService
+      .login(this.account)
+      .then((accountResponse: AccountResponse) => {
+        if (accountResponse.status == 200) {
+          alert(`Bienvenido ${accountResponse.data.username}`);
+          this.account = {username: '', password: ''};
         }
-        else {
-          this.router.navigate(['/usuario-privado']);
-        }
-        
-        this.account = {
-          username: '',
-          email:'',
-          password: '',
-          role: '',
-        };
-
-      } else {
-        alert('Credenciales incorrectas');
-      }
-    });
+        if (accountResponse.status == 400)
+          alert('Credenciales inválidas');
+      });
   }
 }

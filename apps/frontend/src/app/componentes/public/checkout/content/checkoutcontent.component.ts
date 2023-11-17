@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  UserDto,
+  UserResponse,
+  UserService,
+} from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-checkoutcontent',
@@ -6,13 +12,52 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkoutcontent.component.css'],
 })
 export class CheckoutContentComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
   public isOne = false;
   public isTwo = true;
-  // Cart
   public cart: CartItem[] = cartitem;
+  user: UserDto = {
+    email: '',
+    name: '',
+    lastname: '',
+    city: '',
+    address: '',
+    phone: 0,
+  };
 
-  ngOnInit(): void {
-    console.log('ContentComponent');
+  constructor(private userService: UserService, private router: Router) {}
+
+  public async createOrUpdateUser() {
+    console.log(JSON.stringify(this.user, null, 2));
+    if (
+      !this.user.email ||
+      !this.user.name ||
+      !this.user.lastname ||
+      !this.user.city ||
+      !this.user.address ||
+      !this.user.phone
+    ) {
+      alert('Todos los campos son requeridos');
+      return;
+    }
+
+    await this.userService
+      .createuser(this.user)
+      .then((userResponse: UserResponse) => {
+        if (userResponse.status == 200) {
+          alert(`Bienvenido ${userResponse.data.email}`);
+          this.user = {
+            email: '',
+            name: '',
+            lastname: '',
+            city: '',
+            address: '',
+            phone: 0,
+          };
+        }
+      });
   }
 
   public calculateprice() {

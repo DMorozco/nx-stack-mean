@@ -9,14 +9,12 @@ export class UserService {
   static async getAll(): Promise<UserDto[]> {
     const users: IUser[] | void = await User.find();
     return (users || []).map((user: IUser) => ({
-      username: user.username,
-      password: user.password,
-      email: user.email,
       name: user.name,
       lastname: user.lastname,
-      city: user.city,
       address: user.address,
+      city: user.city,
       phone: user.phone,
+      email: user.email,
     }));
   }
 
@@ -24,14 +22,12 @@ export class UserService {
     const user: IUser | void = await User.findOne({ email: email });
     if (user) {
       return {
-        username: user.username,
-        password: user.password,
-        email: user.email,
         name: user.name,
         lastname: user.lastname,
-        city: user.city,
         address: user.address,
+        city: user.city,
         phone: user.phone,
+        email: user.email,
       };
     }
     return null;
@@ -42,14 +38,12 @@ export class UserService {
       const newUser: IUser | void = await User.create(user);
       if (newUser) {
         return {
-          username: user.username,
-          password: user.password,
-          email: user.email,
           name: user.name,
           lastname: user.lastname,
-          city: user.city,
           address: user.address,
+          city: user.city,
           phone: user.phone,
+          email: user.email,
         };
       }
     } catch (error) {
@@ -76,14 +70,12 @@ export class UserService {
       );
       if (updateUser) {
         return {
-          username: user.username,
-          password: user.password,
-          email: user.email,
           name: user.name,
           lastname: user.lastname,
-          city: user.city,
           address: user.address,
+          city: user.city,
           phone: user.phone,
+          email: user.email,
         };
       }
     } catch (error) {
