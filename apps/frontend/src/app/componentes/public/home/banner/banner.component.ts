@@ -69,7 +69,7 @@ export const homeBanner: ProductDto[] = [
       "id": 1,
       "title": "Receta italiana",
       "subtitle": "Pepperoni Pizza con queso",
-      "shortdesc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
+      "shortdesc": "Las mejores pizzas para compartir",
       "calories": 480,
       "mozarella": 120,
       "price": 10.99,

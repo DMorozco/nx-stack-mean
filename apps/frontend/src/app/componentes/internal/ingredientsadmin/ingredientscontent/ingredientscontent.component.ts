@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-ingredientscontent',
   templateUrl: './ingredientscontent.component.html',
   styleUrls: ['./ingredientscontent.component.css'],
 })
+
+
 export class IngredientscontentComponent implements OnInit {
   // Cart
   taxvalue = 9.99;

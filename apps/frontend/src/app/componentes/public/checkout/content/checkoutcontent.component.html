@@ -1,107 +1,180 @@
 <!-- Checkout Start -->
 <section class="section">
-    <div class="container">
-        <form method="post">
-            <div class="row">
-                <div class="col-xl-7">
-                    <!-- Login -->
-                    
-                    <!-- Coupon Code -->
-                    
-                    <div [ngbCollapse]="isTwo" class="collapse">
-                        <div class="ct-notice-content d-block">
-                            <p>If you have a coupon code, apply it below</p>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Coupon Code">
-                                <div class="input-group-append">
-                                    <button class="btn-custom shadow-none" type="button">Apply Code</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Buyer Info -->
-                    <h4>Billing Details</h4>
-                    <div class="row">
-                        <div class="form-group col-xl-6">
-                            <label>Nombre  <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Primer nombre" name="fname" class="form-control" value="" [(ngModel)]="user.name" 
-                                required="">
-                        </div>
-                        <div class="form-group col-xl-6">
-                            <label>Apellido <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Apellido" name="lname" class="form-control" value=""[(ngModel)]="user.lastname" 
-                                required="">
-                        </div>
-                       
-                        <div class="form-group col-xl-12">
-                            
-                        </div>
-                        <div class="form-group col-xl-6">
-                            <label>Direccion de envio <span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Direccion de envio" name="addr-1" class="form-control"
-                                value="" [(ngModel)]="user.address" required ="">
-                        </div>
-                        
-                        <div class="form-group col-xl-12">
-                            <label>Ciudad<span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Ciudad" name="town" class="form-control" value="" [(ngModel)]="user.city" 
-                                required="">
-                        </div>
-                        <div class="form-group col-xl-6">
-                            <label>Telefono<span class="text-danger">*</span></label>
-                            <input type="text" placeholder="Telefono" name="phone" class="form-control" value="" [(ngModel)]="user.phone" 
-                                required="">
-                        </div>
-                        <div class="form-group col-xl-6">
-                            <label>Email <span class="text-danger">*</span></label>
-                            <input type="email" placeholder="Email " name="email" class="form-control" value="" [(ngModel)]="user.email"
-                                required="">
-                        </div>
-                       
-                    </div>
-                    <!-- /Buyer Info -->
+  <div class="container">
+    <form method="post">
+      <div class="row">
+        <div class="col-xl-7">
+          <!-- Login -->
+
+          <!-- Coupon Code -->
+
+          <div [ngbCollapse]="isTwo" class="collapse">
+            <div class="ct-notice-content d-block">
+              <p>If you have a coupon code, apply it below</p>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Coupon Code"
+                />
+                <div class="input-group-append">
+                  <button class="btn-custom shadow-none" type="button">
+                    Apply Code
+                  </button>
                 </div>
-                <div class="col-xl-5 checkout-billing">
-                    <!-- Order Details Start -->
-                    <table class="ct-responsive-table">
-                        <thead>
-                            <tr>
-                                <th>Producto</th>
-                                <th>Cantidad</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of cart">
-                                <td data-title="Product">
-                                    <div class="cart-product-wrapper">
-                                        <div class="cart-product-body">
-                                            <h6> <a routerLink="/menu-item-v1/1">{{item.name}}</a> </h6>
-                                            <p *ngFor="let item of item.flavours">{{item}}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-title="Quantity">x{{item.qty}}</td>
-                                <td data-title="Total"> <strong>{{item.price * item.qty | number:'1.2-2'}}$</strong>
-                                </td>
-                            </tr>
-                            <tr class="total">
-                                <td>
-                                    <h6 class="mb-0">Total</h6>
-                                </td>
-                                <td></td>
-                                <td> <strong>{{calculateprice() | number:'1.2-2'}}$</strong> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="small">Your personal data will be used to process your order, support your experience
-                        throughout this website, and for other purposes described in our <a class="btn-link"
-                            href="#">privacy policy.</a> </p>
-                    <button type="submit" class="btn-custom primary btn-block "(click)="createOrUpdateUser()">Ordenar</button>
-                    <!-- Order Details End -->
-                </div>
+              </div>
             </div>
-        </form>
-    </div>
+          </div>
+          <!-- Buyer Info -->
+          <h4>Billing Details</h4>
+          <div class="row">
+            <div class="form-group col-xl-6">
+              <label>Nombre <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                placeholder="Primer nombre"
+                name="fname"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.name"
+                required=""
+              />
+            </div>
+            <div class="form-group col-xl-6">
+              <label>Apellido <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                placeholder="Apellido"
+                name="lname"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.lastname"
+                required=""
+              />
+            </div>
+
+            <div class="form-group col-xl-12"></div>
+            <div class="form-group col-xl-6">
+              <label
+                >Direccion de envio <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                placeholder="Direccion de envio"
+                name="addr-1"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.address"
+                required=""
+              />
+            </div>
+
+            <div class="form-group col-xl-12">
+              <label>Ciudad<span class="text-danger">*</span></label>
+              <input
+                type="text"
+                placeholder="Ciudad"
+                name="town"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.city"
+                required=""
+              />
+            </div>
+            <div class="form-group col-xl-6">
+              <label>Telefono<span class="text-danger">*</span></label>
+              <input
+                type="text"
+                placeholder="Telefono"
+                name="phone"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.phone"
+                required=""
+              />
+            </div>
+            <div class="form-group col-xl-6">
+              <label>Email <span class="text-danger">*</span></label>
+              <input
+                type="email"
+                placeholder="Email "
+                name="email"
+                class="form-control"
+                value=""
+                [(ngModel)]="user.email"
+                required=""
+              />
+            </div>
+          </div>
+          <!-- /Buyer Info -->
+        </div>
+        <div class="col-xl-5 checkout-billing">
+          <!-- Order Details Start -->
+          <table class="ct-responsive-table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of products">
+                <td data-title="Product">
+                  <div class="cart-product-wrapper">
+                    <div class="cart-product-body">
+                      <h6>
+                        <a routerLink="/menu-item-v1/1">{{ item.name }}</a>
+                      </h6>
+                      <div
+                        style="display: flex"
+                        *ngFor="let item of item.toppings"
+                      >
+                        <p>{{ item.name }}</p>
+                        <p>$ {{ item.price }}</p>
+                      </div>
+                      <div
+                        style="display: flex"
+                        *ngFor="let item of item.flavours"
+                      >
+                        <p>{{ item }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td data-title="Quantity">x{{ item.quantity }}</td>
+                <td data-title="Total">
+                  <strong
+                    >{{ item.price * item.quantity | number : '1.2-2' }}$</strong
+                  >
+                </td>
+              </tr>
+              <tr class="total">
+                <td>
+                  <h6 class="mb-0">Total</h6>
+                </td>
+                <td></td>
+                <td>
+                  <strong>{{ calculateprice() | number : '1.2-2' }}$</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="small">
+            Your personal data will be used to process your order, support your
+            experience throughout this website, and for other purposes described
+            in our <a class="btn-link" href="#">privacy policy.</a>
+          </p>
+          <button
+            type="submit"
+            class="btn-custom primary btn-block"
+            (click)="processOrder()">
+            Ordenar
+          </button>
+          <!-- Order Details End -->
+        </div>
+      </div>
+    </form>
+  </div>
 </section>
 <!-- Checkout End -->

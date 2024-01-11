@@ -1,29 +1,34 @@
 export interface CustomerDto {
-    name: string,
-    phone: string,
-    address: string,
+  name: string;
+  lastname: string;
+  address: string;
+  city: string;
+  phone: number;
+  email: string;
 }
 
-export interface IngredientDTO {
-    code: string;
-    name: string;
-    price: number;
+export interface ToppingDTO {
+  code: number;
+  name: string;
+  price: number;
 }
 
-export interface PizzaDto {
-    code: string;
-    name: string;
-    ingredients: IngredientDTO[];
-    quantity: number;
-    price: number;
-    subtotal: number;
+export interface OrderItemDto {
+  code: number;
+  img: string;
+  name: string;
+  quantity: number;
+  price: number;
+  flavours: string[];
+  size: number;
+  toppings?: ToppingDTO[];
 }
 
 export interface OrderDto {
-    orderId?: string,
-    customer: CustomerDto,
-    products: PizzaDto[],
-    createDate?: Date,
-    total: number,
-    status?: 'created' | 'delivered' | 'cancelled'
+  orderId?: string;
+  customer: CustomerDto;
+  products: OrderItemDto[];
+  createDate?: Date;
+  total: number;
+  status?: 'created' | 'delivered' | 'cancelled';
 }

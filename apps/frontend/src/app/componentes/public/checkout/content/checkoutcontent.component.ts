@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid';
+import {
+  OrderDto,
+  OrderItemDto,
+  OrderResponse,
+  OrderService,
+} from 'src/app/services/order.service';
 import {
   UserDto,
   UserResponse,
@@ -12,13 +19,10 @@ import {
   styleUrls: ['./checkoutcontent.component.css'],
 })
 export class CheckoutContentComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
   public isOne = false;
   public isTwo = true;
-  public cart: CartItem[] = cartitem;
-  user: UserDto = {
+  public products: OrderItemDto[] = orderItems;
+  public user: UserDto = {
     email: '',
     name: '',
     lastname: '',
@@ -27,10 +31,22 @@ export class CheckoutContentComponent implements OnInit {
     phone: 0,
   };
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private orderService: OrderService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    console.log('CheckoutContentComponent');
+  }
+
+  public async processOrder() {
+    await this.createOrUpdateUser();
+    await this.createOrder();
+  }
 
   public async createOrUpdateUser() {
-    console.log(JSON.stringify(this.user, null, 2));
     if (
       !this.user.email ||
       !this.user.name ||
@@ -39,7 +55,7 @@ export class CheckoutContentComponent implements OnInit {
       !this.user.address ||
       !this.user.phone
     ) {
-      alert('Todos los campos son requeridos');
+      alert('Todos los campos son requercodeos');
       return;
     }
 
@@ -47,7 +63,27 @@ export class CheckoutContentComponent implements OnInit {
       .createuser(this.user)
       .then((userResponse: UserResponse) => {
         if (userResponse.status == 200) {
-          alert(`Bienvenido ${userResponse.data.email}`);
+          alert(`Bienvencodeo ${userResponse.data.email}`);
+        }
+      });
+  }
+
+  public async createOrder() {
+    const order: OrderDto = {
+      orderId: uuidv4(),
+      customer: this.user,
+      products: orderItems,
+      createDate: new Date(),
+      total: this.calculateprice(),
+      status: 'created',
+    };
+    console.log(JSON.stringify(order, null, 2));
+
+    await this.orderService
+      .createorder(order)
+      .then((orderResponse: OrderResponse) => {
+        if (orderResponse.status == 200) {
+          alert(`orden creada ${orderResponse}`);
           this.user = {
             email: '',
             name: '',
@@ -61,69 +97,83 @@ export class CheckoutContentComponent implements OnInit {
   }
 
   public calculateprice() {
-    return this.cart.reduce(
-      (subtotal, item) => subtotal + item.qty * item.price,
+    return this.products.reduce(
+      (subtotal, item) => subtotal + item.quantity * item.price,
       0
     );
   }
 }
 
-export interface CartItem {
-  id: number;
-  img: string;
-  name: string;
-  qty: number;
-  price: number;
-  flavours: string[];
-}
-
-export const cartitem: CartItem[] = [
+export const orderItems: OrderItemDto[] = [
   {
-    id: 1,
+    code: 1,
     img: 'assets/img/1.png',
     name: 'Pepperoni',
-    qty: 4,
+    quantity: 4,
     price: 9.99,
-    flavours: ['14 Inches', 'Extra Cheese', 'Cheese Crust'],
+    size: 14,
+    toppings: [
+      {
+        code: 1,
+        name: 'Fresh Mushroom',
+        price: 0.75,
+      },
+      {
+        code: 1,
+        name: 'Chicken',
+        price: 2.45,
+      },
+      {
+        code: 1,
+        name: 'Mozarella',
+        price: 1.75,
+      },
+    ],
+    flavours: ['Regular dough', 'Cheese Crust'],
   },
   {
-    id: 2,
+    code: 2,
     img: 'assets/img/2.png',
     name: 'Vegetarian',
-    qty: 2,
+    quantity: 2,
     price: 5.99,
-    flavours: ['14 Inches'],
+    flavours: ['Regular dough', 'Cheese Crust'],
+    size: 14,
   },
   {
-    id: 3,
+    code: 3,
     img: 'assets/img/3.png',
     name: 'Italian Jalapeno Special',
-    qty: 1,
+    quantity: 1,
     price: 12.99,
-    flavours: ['14 Inches', 'Extra Cheese', 'Cheese Crust'],
+    flavours: ['Regular dough', 'Cheese Crust'],
+    size: 14,
   },
   {
-    id: 4,
+    code: 4,
     img: 'assets/img/4.png',
     name: 'Barbeque Chicken',
-    qty: 4,
+    quantity: 4,
     price: 9.99,
-    flavours: ['12 Inches', 'Extra Cheese', 'Cheese Crust', 'Added Chicken'],
+    flavours: ['Regular dough', 'Cheese Crust'],
+    size: 14,
   },
   {
-    id: 5,
+    code: 5,
     img: 'assets/img/5.png',
     name: 'Four Cheese',
-    qty: 2,
+    quantity: 2,
     price: 5.99,
-    flavours: ['12 Inches', 'Added Chicken'],
+    flavours: ['Regular dough', 'Cheese Crust'],
+    size: 14,
   },
   {
-    id: 6,
+    code: 6,
     img: 'assets/img/6.png',
     name: 'Swiss Mushroom',
-    qty: 1,
+    quantity: 1,
     price: 12.99,
-    flavours: ['12 Inches', 'Extra Cheese', 'Cheese Crust', 'Added Chicken'],
+    flavours: ['Regular dough', 'Cheese Crust'],
+    size: 14,
   },
 ];

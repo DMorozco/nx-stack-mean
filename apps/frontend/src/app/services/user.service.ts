@@ -9,7 +9,6 @@ export interface UserDto {
   city: string;
   address: string;
   phone: number;
-   
 }
 
 export interface UserResponse {
@@ -59,11 +58,9 @@ export class UserService {
       public async createuser(user: UserDto): Promise<UserResponse> {
         return await firstValueFrom(this.http.post<UserResponse>(`${this.baseUrl}`, user))
           .then((result) => {
-            console.log(JSON.stringify(result, null, 2))
             return result;
           })
           .catch((error) => {
-            console.log(JSON.stringify(error, null, 2))
             return error;
           });
       }
